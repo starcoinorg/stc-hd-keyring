@@ -1,4 +1,4 @@
-const hdkey = require('ethereumjs-wallet/hdkey')
+const hdkey = require('@starcoin/stc-wallet/hdkey')
 const SimpleKeyring = require('@starcoin/stc-simple-keyring')
 const bip39 = require('bip39')
 const sigUtil = require('eth-sig-util')
@@ -11,7 +11,6 @@ class HdKeyring extends SimpleKeyring {
 
   /* PUBLIC METHODS */
   constructor(opts = {}) {
-    console.log('HDkeyring constructor', opts)
     super()
     this.type = type
     this.deserialize(opts)
@@ -44,7 +43,6 @@ class HdKeyring extends SimpleKeyring {
   }
 
   addAccounts(numberOfAccounts = 1) {
-    console.log('addAccounts', numberOfAccounts)
     if (!this.root) {
       this._initFromMnemonic(bip39.generateMnemonic())
     }
@@ -64,10 +62,7 @@ class HdKeyring extends SimpleKeyring {
   }
 
   getAccounts() {
-    console.log('hd getAccounts', this.wallets)
     return Promise.resolve(this.wallets.map((w) => {
-      console.log(w)
-      console.log(w.getAddress(), w.getAddress().toString('hex'))
       return sigUtil.normalize(w.getAddress().toString('hex'))
     }))
   }
