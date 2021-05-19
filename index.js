@@ -73,12 +73,29 @@ class HdKeyring extends SimpleKeyring {
     }))
   }
 
+  exportAccount(address) {
+    const wallet = this._getWalletForAccount(address)
+    return Promise.resolve(wallet.getPrivateKey().toString('hex'))
+  }
+
   /* PRIVATE METHODS */
   _initFromMnemonic(mnemonic) {
     this.mnemonic = mnemonic
     const seed = bip39.mnemonicToSeed(mnemonic)
     this.hdWallet = hdkey.fromMasterSeed(seed)
     this.root = this.hdWallet.derivePath(this.hdPath)
+  }
+
+  _getWalletForAccount(account) {
+    const targetAddress = sigUtil.normalize(account)
+    return this.wallets.find((w) => {
+      return w.getAddress()
+        .then((address) => {
+          return sigUtil.normalize(address.toString('hex'))
+        }).then((address) => {
+          return ((address === targetAddress) || (sigUtil.normalize(address) === targetAddress))
+        })
+    })
   }
 }
 
