@@ -56,14 +56,20 @@ class HdKeyring extends SimpleKeyring {
       this.wallets.push(wallet)
     }
     const hexWallets = newWallets.map((w) => {
-      return sigUtil.normalize(w.getAddress().toString('hex'))
+      return w.getAddress()
+        .then((address) => {
+          return sigUtil.normalize(address.toString('hex'))
+        })
     })
-    return Promise.resolve(hexWallets)
+    return Promise.all(hexWallets)
   }
 
   getAccounts() {
-    return Promise.resolve(this.wallets.map((w) => {
-      return sigUtil.normalize(w.getAddress().toString('hex'))
+    return Promise.all(this.wallets.map((w) => {
+      return w.getAddress()
+        .then((address) => {
+          return sigUtil.normalize(address.toString('hex'))
+        })
     }))
   }
 
