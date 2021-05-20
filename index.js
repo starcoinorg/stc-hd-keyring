@@ -4,7 +4,7 @@ const bip39 = require('bip39')
 const sigUtil = require('eth-sig-util')
 
 // Options:
-const hdPathString = `m/44'/60'/0'/0`
+const hdPathString = `m/44'/101010'/0'/0`
 const type = 'HD Key Tree'
 
 class HdKeyring extends SimpleKeyring {
