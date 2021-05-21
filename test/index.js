@@ -17,6 +17,24 @@ describe('hd-keyring', function () {
     keyring = new HdKeyring()
   })
 
+  describe('getReceiptIdentifier', function () {
+    it('constructs', function (done) {
+      keyring = new HdKeyring({
+        mnemonic: 'vital fun cereal burden announce claim awkward foster wash mass gap rebuild',
+        numberOfAccounts: 1,
+      })
+
+      keyring.getAccounts()
+        .then((accounts) => {
+          assert.equal(accounts[0], '0xb8dfc0c1839bc6e0281ccfbdbf1b7469')
+          keyring.getReceiptIdentifier(accounts[0]).then((receiptIdentifier) => {
+            assert.equal(receiptIdentifier, 'stc1phr0upsvrn0rwq2que77m7xm5dyprfq7y7qzgpxal36wlj08ndg4m3h7qcxpeh3hq9qwvl0dlrd6xjygs8u0')
+            done()
+          })
+        })
+    })
+  })
+
   describe('constructor', function () {
     it('constructs', function (done) {
       keyring = new HdKeyring({
@@ -110,9 +128,9 @@ describe('hd-keyring', function () {
       // Push a mock wallet
       const desiredOutput = 'foo'
       keyring.wallets.push({
-        getAddress () {
+        getAddress() {
           return {
-            toString () {
+            toString() {
               return desiredOutput
             },
           }

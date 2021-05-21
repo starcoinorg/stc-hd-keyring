@@ -78,6 +78,11 @@ class HdKeyring extends SimpleKeyring {
     return Promise.resolve(wallet.getPrivateKey().toString('hex'))
   }
 
+  getReceiptIdentifier(address) {
+    const wallet = this._getWalletForAccount(address)
+    return wallet.getReceiptIdentifier()
+  }
+
   /* PRIVATE METHODS */
   _initFromMnemonic(mnemonic) {
     this.mnemonic = mnemonic
