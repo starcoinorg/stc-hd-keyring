@@ -26,9 +26,10 @@ describe('hd-keyring', function () {
 
       keyring.getAccounts()
         .then((accounts) => {
-          assert.equal(accounts[0], '0xb8dfc0c1839bc6e0281ccfbdbf1b7469')
+          console.log(accounts)
+          assert.equal(accounts[0], '0x79f75dc7cb6812760e1afba01dc9380e')
           keyring.getReceiptIdentifier(accounts[0]).then((receiptIdentifier) => {
-            assert.equal(receiptIdentifier, 'stc1phr0upsvrn0rwq2que77m7xm5dyprfq7y7qzgpxal36wlj08ndg4m3h7qcxpeh3hq9qwvl0dlrd6xjygs8u0')
+            assert.equal(receiptIdentifier, 'stc1p08m4m37tdqf8vrs6lwspmjfcpmrle9pwmacuvuztr92yfg4yfqzhna6acl9ksynkpcd0hgqaeyuqu7ys8gr')
             done()
           })
         })

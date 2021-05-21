@@ -4,7 +4,7 @@ const bip39 = require('bip39')
 const sigUtil = require('eth-sig-util')
 
 // Options:
-const hdPathString = `m/44'/101010'/0'/0`
+const hdPathString = `m/44'/101010'/0'/0'`
 const type = 'HD Key Tree'
 
 class HdKeyring extends SimpleKeyring {
@@ -46,11 +46,11 @@ class HdKeyring extends SimpleKeyring {
     if (!this.root) {
       this._initFromMnemonic(bip39.generateMnemonic())
     }
-
+    const HARDENED_OFFSET = 0x80000000
     const oldLen = this.wallets.length
     const newWallets = []
     for (let i = oldLen; i < numberOfAccounts + oldLen; i++) {
-      const child = this.root.deriveChild(i)
+      const child = this.root.deriveChild(i + HARDENED_OFFSET)
       const wallet = child.getWallet()
       newWallets.push(wallet)
       this.wallets.push(wallet)
