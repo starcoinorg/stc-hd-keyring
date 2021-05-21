@@ -83,6 +83,28 @@ class HdKeyring extends SimpleKeyring {
     return wallet.getReceiptIdentifier()
   }
 
+  getReceiptIdentifiers() {
+    return Promise.all(this.wallets.map((w) => {
+      return w.getAddress()
+        .then((addr) => {
+          const address = sigUtil.normalize(addr.toString('hex'))
+          console.log({ address })
+          return w.getReceiptIdentifier(address).then((receiptIdentifier) => {
+            console.log(address, receiptIdentifier)
+            return { address, receiptIdentifier }
+          })
+        })
+    })).then((ris) => {
+      return ris.reduce(
+        (acc, { address, receiptIdentifier }) => {
+          acc[address] = receiptIdentifier
+          return acc
+        },
+        {},
+      )
+    })
+  }
+
   /* PRIVATE METHODS */
   _initFromMnemonic(mnemonic) {
     this.mnemonic = mnemonic

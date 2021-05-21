@@ -10,6 +10,7 @@ const sampleMnemonic = 'finish oppose decorate face calm tragic certain desk hou
 const firstAcct = '0x1c96099350f13d558464ec79b9be4445aa0ef579'
 const secondAcct = '0x1b00aed43a693f3a957f9feb5cc08afa031e37a0'
 
+// TODO: add test cases for https://github.com/satoshilabs/slips/blob/master/slip-0010.md#test-vector-1-for-ed25519
 describe('hd-keyring', function () {
 
   let keyring
@@ -26,12 +27,29 @@ describe('hd-keyring', function () {
 
       keyring.getAccounts()
         .then((accounts) => {
-          console.log(accounts)
+          // console.log(accounts)
           assert.equal(accounts[0], '0x79f75dc7cb6812760e1afba01dc9380e')
           keyring.getReceiptIdentifier(accounts[0]).then((receiptIdentifier) => {
             assert.equal(receiptIdentifier, 'stc1p08m4m37tdqf8vrs6lwspmjfcpmrle9pwmacuvuztr92yfg4yfqzhna6acl9ksynkpcd0hgqaeyuqu7ys8gr')
             done()
           })
+        })
+    })
+  })
+
+  describe('getReceiptIdentifiers', function () {
+    it('constructs', function (done) {
+      keyring = new HdKeyring({
+        mnemonic: 'vital fun cereal burden announce claim awkward foster wash mass gap rebuild',
+        numberOfAccounts: 2,
+      })
+
+      keyring.getReceiptIdentifiers()
+        .then((receiptIdentifiers) => {
+          // console.log(receiptIdentifiers)
+          assert.equal(receiptIdentifiers['0x79f75dc7cb6812760e1afba01dc9380e'], 'stc1p08m4m37tdqf8vrs6lwspmjfcpmrle9pwmacuvuztr92yfg4yfqzhna6acl9ksynkpcd0hgqaeyuqu7ys8gr')
+          assert.equal(receiptIdentifiers['0x01a22edfa18ec397ff27e144b655e15b'], 'stc1pqx3zahap3mpe0le8u9ztv40pt00n5zqtrlz67aj2vexh6l5gu05srg3wm7scasuhlun7z39k2hs4k5xhr3h')
+          done()
         })
     })
   })
