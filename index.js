@@ -94,15 +94,7 @@ class HdKeyring extends SimpleKeyring {
             return { address, receiptIdentifier }
           })
         })
-    })).then((ris) => {
-      return ris.reduce(
-        (acc, { address, receiptIdentifier }) => {
-          acc[address] = receiptIdentifier
-          return acc
-        },
-        {},
-      )
-    })
+    }))
   }
 
   /* PRIVATE METHODS */

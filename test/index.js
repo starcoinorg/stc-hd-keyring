@@ -46,6 +46,15 @@ describe('hd-keyring', function () {
 
       keyring.getReceiptIdentifiers()
         .then((receiptIdentifiers) => {
+          return receiptIdentifiers.reduce(
+            (ids, { address, receiptIdentifier }) => {
+              ids[address] = receiptIdentifier
+              return ids
+            },
+            {},
+          )
+        })
+        .then((receiptIdentifiers) => {
           // console.log(receiptIdentifiers)
           assert.equal(receiptIdentifiers['0x79f75dc7cb6812760e1afba01dc9380e'], 'stc1p08m4m37tdqf8vrs6lwspmjfcpmrle9pwmacuvuztr92yfg4yfqzhna6acl9ksynkpcd0hgqaeyuqu7ys8gr')
           assert.equal(receiptIdentifiers['0x01a22edfa18ec397ff27e144b655e15b'], 'stc1pqx3zahap3mpe0le8u9ztv40pt00n5zqtrlz67aj2vexh6l5gu05srg3wm7scasuhlun7z39k2hs4k5xhr3h')
