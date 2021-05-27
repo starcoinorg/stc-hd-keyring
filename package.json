@@ -1,6 +1,6 @@
 {
   "name": "@starcoin/stc-hd-keyring",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple standard interface for a seed phrase generated set of Starcoin accounts.",
   "engines": {
     "node": ">= 10"
@@ -16,7 +16,7 @@
     "url": "git+ssh://git@github.com/starcoinorg/stc-hd-keyring.git"
   },
   "keywords": [
-    "ethereum",
+    "starcoin",
     "keyring"
   ],
   "author": "",
@@ -26,13 +26,11 @@
   },
   "homepage": "https://github.com/starcoinorg/stc-hd-keyring#readme",
   "dependencies": {
+    "@starcoin/stc-simple-keyring": "^0.2.0",
+    "@starcoin/stc-wallet": "^0.2.1",
     "bip39": "^2.2.0",
     "eth-sig-util": "^3.0.1",
-    "eth-simple-keyring": "^4.2.0",
-    "@starcoin/stc-simple-keyring": "^0.1.0",
-    "@starcoin/stc-wallet": "^0.1.0",
-    "ethereumjs-util": "^7.0.9",
-    "ethereumjs-wallet": "^1.0.1"
+    "ethereumjs-util": "^7.0.9"
   },
   "devDependencies": {
     "@metamask/eslint-config": "^4.0.0",

@@ -1,6 +1,6 @@
 # HD Keyring
 
-A simple JS class wrapped around [@starcoin/stc-wallet](https://github.com/starcoinorg/stc-wallet) designed to expose an interface common to many different signing strategies, to be used in a `KeyringController`, like is being used in [StarMask](https://westar.io/)
+A simple JS class wrapped around [@starcoin/stc-wallet](https://github.com/starcoinorg/stc-wallet) designed to expose an interface common to many different signing strategies, to be used in a `KeyringController`, like is being used in [StarMask](https://starcoin.org/)
 
 ## The Keyring Class Protocol
 
@@ -44,6 +44,15 @@ The method may be called with or without an argument, specifying the number of a
 ### getAccounts()
 
 When this method is called, you must return an array of hex-string addresses for the accounts that your Keyring is able to sign for.
+
+### getReceiptIdentifiers()
+
+When this method is called, you must return an array of { address, receiptIdentifiers } for the accounts.
+
+
+### getReceiptIdentifier(address)
+
+Return the receiptIdentifier of the specified account.
 
 ### exportAccount(address)
 
