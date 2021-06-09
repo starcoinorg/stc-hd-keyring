@@ -88,10 +88,20 @@ class HdKeyring extends SimpleKeyring {
       return w.getAddress()
         .then((addr) => {
           const address = sigUtil.normalize(addr.toString('hex'))
-          console.log({ address })
           return w.getReceiptIdentifier(address).then((receiptIdentifier) => {
-            console.log(address, receiptIdentifier)
             return { address, receiptIdentifier }
+          })
+        })
+    }))
+  }
+
+  getPublicKeys() {
+    return Promise.all(this.wallets.map((w) => {
+      return w.getAddress()
+        .then((addr) => {
+          const address = sigUtil.normalize(addr.toString('hex'))
+          return w.getPublicKeyString().then((publicKey) => {
+            return { address, publicKey }
           })
         })
     }))
