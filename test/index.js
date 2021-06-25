@@ -63,6 +63,25 @@ describe('hd-keyring', function () {
     })
   })
 
+  describe('exportAccount', function () {
+    it('constructs', function (done) {
+      keyring = new HdKeyring({
+        mnemonic: 'vital fun cereal burden announce claim awkward foster wash mass gap rebuild',
+        numberOfAccounts: 2,
+      })
+
+      keyring.getAccounts()
+        .then((accounts) => {
+          // console.log(accounts)
+          keyring.exportAccount(accounts[1])
+            .then((privateKey) => {
+              assert.equal(privateKey, '6237a7cfac97e1afc4f480330be898f72c4fb5d62467602b6765193b671471c7')
+              done()
+            })
+        })
+    })
+  })
+
   describe('constructor', function () {
     it('constructs', function (done) {
       keyring = new HdKeyring({

@@ -74,13 +74,11 @@ class HdKeyring extends SimpleKeyring {
   }
 
   exportAccount(address) {
-    const wallet = this._getWalletForAccount(address)
-    return Promise.resolve(wallet.getPrivateKey().toString('hex'))
+    return this._getWalletForAccount(address).then((wallet) => wallet.getPrivateKey().toString('hex'))
   }
 
   getReceiptIdentifier(address) {
-    const wallet = this._getWalletForAccount(address)
-    return wallet.getReceiptIdentifier()
+    return this._getWalletForAccount(address).then((wallet) => wallet.getReceiptIdentifier())
   }
 
   getReceiptIdentifiers() {
@@ -117,13 +115,12 @@ class HdKeyring extends SimpleKeyring {
 
   _getWalletForAccount(account) {
     const targetAddress = sigUtil.normalize(account)
-    return this.wallets.find((w) => {
-      return w.getAddress()
-        .then((address) => {
-          return sigUtil.normalize(address.toString('hex'))
-        }).then((address) => {
-          return ((address === targetAddress) || (sigUtil.normalize(address) === targetAddress))
-        })
+    return Promise.all(this.wallets.map(async (w) => {
+      const addressBytes = await w.getAddress()
+      const address = sigUtil.normalize(addressBytes.toString('hex'))
+      return ((address === targetAddress) || (sigUtil.normalize(address) === targetAddress))
+    })).then((arr) => {
+      return this.wallets[arr.findIndex((r) => Boolean(r))]
     })
   }
 }
