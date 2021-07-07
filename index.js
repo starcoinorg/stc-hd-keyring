@@ -1,5 +1,6 @@
 const hdkey = require('@starcoin/stc-wallet/hdkey')
 const SimpleKeyring = require('@starcoin/stc-simple-keyring')
+const arrayify = require('@ethersproject/bytes').arrayify
 const utils = require('@starcoin/starcoin').utils
 const ethUtil = require('@starcoin/stc-util')
 const bip39 = require('bip39')
@@ -89,6 +90,17 @@ class HdKeyring extends SimpleKeyring {
           tx,
         )
         return Promise.resolve(hex)
+      })
+  }
+
+  signPersonalMessage(address, msgHex, opts = {}) {
+    return this._getWalletForAccount(address, opts)
+      .then((w) => {
+        const privKey = w.getPrivateKey()
+        return utils.sign.signPersonalMessage(arrayify(msgHex), privKey)
+          .then((signature) => {
+            return signature
+          })
       })
   }
 
