@@ -97,7 +97,7 @@ class HdKeyring extends SimpleKeyring {
     return this._getWalletForAccount(address, opts)
       .then((w) => {
         const privKey = w.getPrivateKey()
-        return utils.sign.signPersonalMessage(arrayify(msgHex), privKey)
+        return utils.signedMessage.encodeSignedMessage(arrayify(msgHex), privKey)
           .then((signature) => {
             return signature
           })
