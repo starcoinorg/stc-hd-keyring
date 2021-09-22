@@ -1,6 +1,6 @@
 {
   "name": "@starcoin/stc-hd-keyring",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A simple standard interface for a seed phrase generated set of Starcoin accounts.",
   "engines": {
     "node": ">= 10"
@@ -28,9 +28,9 @@
   "dependencies": {
     "@ethersproject/bytes": "^5.0.6",
     "@starcoin/starcoin": "^1.4.3",
-    "@starcoin/stc-simple-keyring": "^1.4.1",
+    "@starcoin/stc-simple-keyring": "^1.4.2",
     "@starcoin/stc-util": "^0.3.0",
-    "@starcoin/stc-wallet": "^1.2.1",
+    "@starcoin/stc-wallet": "^1.2.2",
     "bip39": "^2.2.0",
     "eth-sig-util": "^3.0.1",
     "ethereumjs-util": "^7.0.9"
