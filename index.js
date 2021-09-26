@@ -104,10 +104,19 @@ class HdKeyring extends SimpleKeyring {
       })
   }
 
-  getEncryptionPublicKey(withAccount, opts = {}) {
+  getPublicKeyFor(withAccount, opts = {}) {
     return this._getWalletForAccount(withAccount, opts)
       .then((w) => {
         return w.getPublicKeyString()
+      })
+  }
+
+  getEncryptionPublicKey(withAccount, opts = {}) {
+    return this._getWalletForAccount(withAccount, opts)
+      .then((w) => {
+        const privKey = w.getPrivateKey()
+        const publicKey = sigUtil.getEncryptionPublicKey(privKey)
+        return publicKey
       })
   }
 
@@ -137,6 +146,16 @@ class HdKeyring extends SimpleKeyring {
           })
         })
     }))
+  }
+
+  // For stc_decrypt:
+  decryptMessage(withAccount, encryptedData, opts) {
+    return this._getWalletForAccount(withAccount, opts)
+      .then((w) => {
+        const privKey = stcUtil.stripHexPrefix(w.getPrivateKeyString())
+        const sig = sigUtil.decrypt(encryptedData, privKey)
+        return Promise.resolve(sig)
+      })
   }
 
   /* PRIVATE METHODS */
