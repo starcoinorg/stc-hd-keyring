@@ -263,7 +263,7 @@
     read-bigint "^0.1.6"
     ws "7.2.3"
 
-"@starcoin/starcoin@^1.4.3":
+"@starcoin/starcoin@^1.4.3", "@starcoin/starcoin@^1.6.1":
   version "1.5.3"
   resolved "https://registry.npmjs.org/@starcoin/starcoin/-/starcoin-1.5.3.tgz#b75c763f1ec68b149da674852eb73b4717dd7ea1"
   integrity sha512-rO7deVE7ccz3VgwUp/Gbkiv4IKrgmgYZaNWNsmFga/BjtL1cOxjZiJ60b8eMOdqqrta+Qtyoz12CleDJU2+H3w==
@@ -305,10 +305,10 @@
     safe-buffer "^5.1.1"
     secp256k1 "^3.0.1"
 
-"@starcoin/stc-simple-keyring@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.npmjs.org/@starcoin/stc-simple-keyring/-/stc-simple-keyring-1.4.2.tgz#3abcc59b949fa8ea4b5261752f121b2109ca0413"
-  integrity sha512-4/C1XD9lgHnVhVA7Gb5FICl+mMmUTj/GvpWJTPutEKcF+HhVXLYRjqbIne+687Bm3n2paG/3tf+Xe1ka7AuTMw==
+"@starcoin/stc-simple-keyring@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.npmjs.org/@starcoin/stc-simple-keyring/-/stc-simple-keyring-1.5.0.tgz#f00eb7a43b64c7d007cfcf8b1976141474c75104"
+  integrity sha512-jccekBChaVuN6U0mwV8SjL9L3JK0UTBPOcnBOzHP9WBu0SfZcLz2SsQCqq4fdnfzB2vAACL515GHx3ZbRS5YIg==
   dependencies:
     "@ethersproject/bytes" "^5.0.6"
     "@starcoin/starcoin" "^1.4.3"
@@ -1746,6 +1746,11 @@ log-symbols@4.0.0:
   integrity sha512-FN8JBzLx6CzeMrB0tg6pqlGU1wCrXW+ZXGH481kfsBqer0hToTIiHdjH4Mq8xJUbvATujKCvaREGWpGUionraA==
   dependencies:
     chalk "^4.0.0"
+
+loglevel@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.npmjs.org/loglevel/-/loglevel-1.7.1.tgz#005fde2f5e6e47068f935ff28573e125ef72f197"
+  integrity sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
 
 lru-cache@^6.0.0:
   version "6.0.0"
