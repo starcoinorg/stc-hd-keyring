@@ -263,10 +263,10 @@
     read-bigint "^0.1.6"
     ws "7.2.3"
 
-"@starcoin/starcoin@^1.4.3", "@starcoin/starcoin@^1.6.1":
-  version "1.5.3"
-  resolved "https://registry.npmjs.org/@starcoin/starcoin/-/starcoin-1.5.3.tgz#b75c763f1ec68b149da674852eb73b4717dd7ea1"
-  integrity sha512-rO7deVE7ccz3VgwUp/Gbkiv4IKrgmgYZaNWNsmFga/BjtL1cOxjZiJ60b8eMOdqqrta+Qtyoz12CleDJU2+H3w==
+"@starcoin/starcoin@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.npmjs.org/@starcoin/starcoin/-/starcoin-1.6.2.tgz#457e5f0ed7d7af44532aba64aab69ceee5ae200c"
+  integrity sha512-zr5oYgBwi+xzfKD6+kCeqWqccbzMdBwz+kMr9hGIX915L4T2POgK8Y9w98r/0WqgEuMsx4iB9JHUBg3K1DNdOg==
   dependencies:
     "@ethersproject/basex" "^5.0.4"
     "@ethersproject/bignumber" "^5.0"
@@ -280,6 +280,7 @@
     "@starcoin/stc-ed25519" "^0.1.0"
     bech32 "^2.0.0"
     ethereumjs-util "5.1.0"
+    fs "^0.0.1-security"
     is-alphabetical "^1.0.4"
     is-alphanumerical "^1.0.4"
     is-decimal "^1.0.4"
@@ -288,6 +289,7 @@
     is-word-character "^1.0.4"
     js-sha3 "^0.8.0"
     jssha "^3.2.0"
+    lodash "^4.17.21"
     read-bigint "^0.1.6"
     ws "7.2.3"
 
@@ -305,13 +307,13 @@
     safe-buffer "^5.1.1"
     secp256k1 "^3.0.1"
 
-"@starcoin/stc-simple-keyring@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.npmjs.org/@starcoin/stc-simple-keyring/-/stc-simple-keyring-1.5.0.tgz#f00eb7a43b64c7d007cfcf8b1976141474c75104"
-  integrity sha512-jccekBChaVuN6U0mwV8SjL9L3JK0UTBPOcnBOzHP9WBu0SfZcLz2SsQCqq4fdnfzB2vAACL515GHx3ZbRS5YIg==
+"@starcoin/stc-simple-keyring@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.npmjs.org/@starcoin/stc-simple-keyring/-/stc-simple-keyring-1.5.3.tgz#dc440693122caea938ed44020ed8c9a9becfa032"
+  integrity sha512-T4QGJ5DoQSoCQ9CJwT+ov1UyEsZc5Y4l+1Pxk/GVzR8mfFX/FOwmli68SQ8NXELFDa6/h741rso1L4URtaTcsg==
   dependencies:
     "@ethersproject/bytes" "^5.0.6"
-    "@starcoin/starcoin" "^1.4.3"
+    "@starcoin/starcoin" "^1.6.2"
     "@starcoin/stc-util" "^0.3.0"
     "@starcoin/stc-wallet" "^1.2.2"
     eth-sig-util "^2.5.0"
@@ -1281,6 +1283,11 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
+fs@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.npmjs.org/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
+  integrity sha1-invTcYa23d84E/I4WLV+yq9eQdQ=
+
 fsevents@~2.3.1:
   version "2.3.2"
   resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
@@ -1739,6 +1746,11 @@ lodash.truncate@^4.4.2:
   version "4.4.2"
   resolved "https://registry.npmjs.org/lodash.truncate/-/lodash.truncate-4.4.2.tgz#5a350da0b1113b837ecfffd5812cbe58d6eae193"
   integrity sha1-WjUNoLERO4N+z//VgSy+WNbq4ZM=
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@4.0.0:
   version "4.0.0"
