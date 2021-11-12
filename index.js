@@ -125,30 +125,6 @@ class HdKeyring extends SimpleKeyring {
     return this._getWalletForAccount(address).then((wallet) => wallet.getReceiptIdentifier())
   }
 
-  getReceiptIdentifiers() {
-    return Promise.all(this.wallets.map((w) => {
-      return w.getAddress()
-        .then((addr) => {
-          const address = sigUtil.normalize(addr.toString('hex'))
-          return w.getReceiptIdentifier(address).then((receiptIdentifier) => {
-            return { address, receiptIdentifier }
-          })
-        })
-    }))
-  }
-
-  getPublicKeys() {
-    return Promise.all(this.wallets.map((w) => {
-      return w.getAddress()
-        .then((addr) => {
-          const address = sigUtil.normalize(addr.toString('hex'))
-          return w.getPublicKeyString().then((publicKey) => {
-            return { address, publicKey }
-          })
-        })
-    }))
-  }
-
   // For stc_decrypt:
   decryptMessage(withAccount, encryptedData, opts) {
     return this._getWalletForAccount(withAccount, opts)
